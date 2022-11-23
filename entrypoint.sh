@@ -8,6 +8,7 @@ APP_ID="\"app_id\""
 
 for FILE in ./*.zat;
 do
+    cp $FILE .zat;
     if  grep -q "$APP_ID" "$FILE" ; then
         echo "App ID detected, running update" ; 
         zat clean
@@ -19,4 +20,5 @@ do
     else
         echo "Can't deploy. Please check your .zat file" ; 
     fi
+    rm -f .zat
 done
